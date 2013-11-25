@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>ScoreApp</title>
+	<link href="static/css/style.css" rel="stylesheet" type="text/css" /> 
+</head>
+<body>
+
+	<!--utils-->
+	<section id="spinner" class="spinner"></section>
+	<section id="feedback" class="noShowFeedback"></section>
+
+	<header>
+		<img src="static/images/header1.jpg" alt="FrisbeeApp" data-source="http://michellegemmeke.nl/scoreapp/static/images/header1.jpg">
+		<!--<h1>Score App</h1>-->
+	</header>
+
+	<nav>
+		<ul>
+		<!--<li><a href="#/game" data>Game</a></li>
+		<li><a href="#/schedule">Schedule</a></li>-->
+		<li><a href="#/ranking">Home</a></li>
+	    </ul>
+	</nav>
+	
+	<article id="content" class="col">
+
+		<!-- Game page -->
+		<section data-route="game" class="active">
+			<h1 data-bind="title" class="title"></h1>
+
+			<!-- Game Results -->
+				<table> 
+			        <tbody data-bind="gameResults">
+			            <tr>
+			                <td data-bind="team_1_name" class="teamResults"></td>
+			                <td data-bind="team_2_name" class="teamResults"></td>
+				        </tr>
+
+				        <tr>
+				            <td data-bind="team_1_score" class="pointsResults"></td>
+			                <td data-bind="team_2_score" class="pointsResults"></td>
+				        </tr>
+
+				        <tr>
+				        	<td>
+				        		<p data-bind="team_1_min" class="knopMin">-</p>
+		    			    	<p data-bind="team_1_plus" class="knopPlus">+</p>
+					    	    <p data-bind="team_2_min" class="knopMin">-</p>
+		     				   <p data-bind="team_2_plus" class="knopPlus">+</p>
+		    				</td>
+		   				</tr>
+				    </tbody>
+	        	</table>
+	        	<p class="final">Final score</p>
+	        	
+		</section>
+
+		<!-- Schedule page -->
+		<section data-route="schedule" id="schedule">
+			<h1 data-bind="title" class="title"></h1>
+			<p class="swipePool"> < swipe left or right for the next pool ></p>
+			
+			<table> 
+				<tbody data-bind="scoreSchedule">
+		            <tr>
+						<td data-bind="start_time" class="date"></td>
+		            </tr>
+
+		            <tr>
+		                <td data-bind="team_1_name" class="team"></td>
+		                <td data-bind="team_1_score" class="points"></td>
+		                <td data-bind="team_2_score" class="points"></td>
+		                <td data-bind="team_2_name" class="team"></td>
+		            </tr>
+
+		            <tr>
+		            	<td class="edit"><a data-bind="anchor">Update score</a></td>
+		            </tr>
+		        </tbody>
+        	</table>
+		</section>
+
+		<!-- Ranking page -->
+		<section data-route="ranking">
+			<h1 data-bind="title" class="title"></h1>
+			<p class="swipePool"> click on the poolname for the schedule</p>
+			<section data-bind="scoreRanking">
+				<a data-bind="anchor"><h1 data-bind="name"></h1></a>
+				<!-- Header Score Results -->
+				<table> 
+			        <thead>
+			                
+			                <th class="winHead">Played</th>
+			                <th class="winHead">Wins</th>
+			                <th class="winHead">Losses</th>
+			                <th class="winHead">Scored</th>
+			                <th class="winHead">Allowed</th>
+			                <th class="winHead">Minus</th>
+			        </thead> 
+					<tbody data-bind="teams">
+			            <tr>
+			                <td data-bind="name" class="teamRanking"></td> 
+			            </tr>
+			            <tr>
+			                <td data-bind="games_played" class="win"></td>
+			                <td data-bind="wins" class="win"></td>
+			                <td data-bind="losses" class="win"></td>
+			                <td data-bind="points_scored" class="win"></td>
+			                <td data-bind="points_allowed" class="win"></td>
+			                <td data-bind="plus_minus" class="win"></td>
+			            </tr>
+			        </tbody>
+	        	</table>
+	        </section>
+		</section>
+	</article>
+
+	<!-- 
+	Libs 
+	- Qwery: [selector engine](http://www.dustindiaz.com/qwery)
+	- Ready: [dom ready](http://www.dustindiaz.com/smallest-domready-ever)
+	- Routie: [router](http://projects.jga.me/routie/)
+	- Transparancy: [semantic template engine](https://github.com/leonidas/transparency)
+	Aan het eind geplaatst omdat je ook wil dat deze code als laatst uitgevoerd wordt. Dit wordt 'zeker gemaakt' door de domready functie.
+	-->
+	<script src="static/js/lib/routie.min.js"></script>
+	<script src="static/js/lib/ready.min.js" type="text/javascript"></script>
+	<script src="static/js/lib/qwery.min.js" type="text/javascript"></script>
+	<script src="static/js/lib/transparancy.min.js" type="text/javascript"></script>
+	<script src="static/js/lib/promise.min.js" type="text/javascript"></script>
+	<script src="static/js/lib/postmadeeasy.js" type="text/javascript"></script>
+	<script src="static/js/lib/swipe.js" type="text/javascript"></script> <!-- wordt aangeroepen bij Hammer en is een library die swipe mogelijk maakt -->
+
+	<!-- JavaScript van ScoreApp -->
+	<script src="static/js/app.js"></script>
+	
+</body>
+</html>
